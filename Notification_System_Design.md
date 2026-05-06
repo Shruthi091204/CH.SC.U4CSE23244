@@ -1,37 +1,26 @@
 # Stage 1: Notification System Design
 
-## Approach: Min-Heap for Top-N
-To efficiently find the top 10 notifications by priority, we use a **Min-Heap** data structure of size $N=10$.
+## Approach: Min-Heap for Top-10
+To find the top 10 notifications by priority, I used a Min-Heap of size 10.
 
 ### Why Min-Heap?
-For a "Top-N" problem, a Min-Heap is more efficient than sorting the entire list:
-- **Partial Sorting**: We don't need the entire list of notifications to be sorted. We only care about the 10 highest-priority ones.
-- **Efficiency**: A Min-Heap of size 10 allows us to keep track of the "smallest" item among our "best 10". Every time we see a new notification, we only compare it with the root of the heap ($O(1)$). If it's better, we replace the root and re-heapify ($O(\log N)$).
+For a Top-N problem like this, a Min-Heap is better than sorting the whole list:
+- It doesn't need to sort everything. We only keep the 10 best ones.
+- Every time a new notification comes, we just compare it to the smallest one in our top 10. If it's higher priority, we swap them.
 
-## Complexity Analysis
-- **Time Complexity**: $O(K \log N)$, where $K$ is the total number of notifications and $N$ is the limit (10). 
-  - Since $N$ is constant (10), this is essentially **$O(K)$** linear time.
-  - Sorting the entire list would be $O(K \log K)$, which is significantly slower for large $K$.
-- **Space Complexity**: **$O(N)$** to store the heap, which is constant (10 items).
+## Complexity
+- Time Complexity: O(K log 10) where K is the number of notifications. Since 10 is small and constant, it's basically O(K) linear time. This is faster than O(K log K) for full sorting.
+- Space Complexity: O(10) to store the heap, which is constant space.
 
 ## Handling New Notifications
-When a new notification arrives:
-1. Compare its priority score with the current root of the Min-Heap.
-2. If the new notification has a higher priority than the root:
-   - Remove the root (the lowest of the top 10).
-   - Insert the new notification and heapify.
-3. This ensures the heap always contains the 10 highest-priority items encountered so far.
+When a new notification is fetched:
+1. Compare it with the root of the heap.
+2. If it has higher priority than the root, we remove the root and add the new one.
+3. This keeps the heap updated with the 10 highest priority items at all times.
 
-## Priority Scoring Formula
-The priority is determined by a tuple $(W, T)$:
-- **$W$ (Weight)**: 
-  - `Placement` = 3
-  - `Result` = 2
-  - `Event` = 1
-- **$T$ (Timestamp)**: Lexicographical comparison of ISO-like strings (e.g., `"2026-04-22 17:51:30"`).
+## Priority Logic
+The priority is decided using a tuple of (Weight, Timestamp):
+- Weights: Placement = 3, Result = 2, Event = 1.
+- Timestamp: If weights are the same, the newer timestamp wins.
 
-**Priority Rule**: Item $A >$ Item $B$ if:
-- $W_A > W_B$
-- OR ($W_A = W_B$ AND $T_A > T_B$)
-
-Python's tuple comparison `(weight, timestamp)` handles this logic naturally.
+Python handles this naturally when comparing tuples, checking the first element first and then the second.
