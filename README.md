@@ -11,6 +11,8 @@ A full-stack notification system for campus updates, results, and placements.
 `python priority_inbox.py`
 
 ### Stage 2
-1. `cd notification_app_fe`
+1. `cd notification_app`
 2. `npm install`
 3. `npm run dev`
+
+**Local Development Link**: [http://localhost:3000/notifications](http://localhost:3000/notifications)
