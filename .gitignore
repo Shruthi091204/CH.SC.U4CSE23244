@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# JS
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets (Recommended)
+# register.js
+# register2.js
