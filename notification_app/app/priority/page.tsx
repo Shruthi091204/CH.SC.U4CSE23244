@@ -17,7 +17,7 @@ export default function PriorityPage() {
   useEffect(() => {
     fetchNotifications({ limit: 100, page: 1 });
     Log("frontend", "info", "page", "priority page load");
-  }, [fetchNotifications, n, type]);
+  }, [fetchNotifications]);
 
   const handleNChange = (event: any) => {
     setN(event.target.value);
