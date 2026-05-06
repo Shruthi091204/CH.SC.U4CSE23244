@@ -4,7 +4,7 @@ A full-stack notification system for campus updates, results, and placements.
 
 ## Components
 - **Stage 1**: Python script (`priority_inbox.py`) for ranking notifications using a Min-Heap.
-- **Stage 2**: Next.js frontend (`notification_app_fe`) with a priority inbox and logging middleware.
+- **Stage 2**: Next.js frontend (`notification_app`) with a priority inbox and logging middleware.
 
 ## How to run
 ### Stage 1
