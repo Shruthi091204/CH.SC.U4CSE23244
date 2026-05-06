@@ -7,7 +7,7 @@ import ThemeRegistry from "@/components/ThemeRegistry";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CAMPUS NOTIFICATIONS-SHRUTHIKA",
+  title: "CAMPUS NOTIFICATIONS",
   description: "Stay updated with campus events, results, and placements.",
 };
 

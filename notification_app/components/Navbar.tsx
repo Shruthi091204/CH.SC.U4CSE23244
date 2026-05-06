@@ -12,13 +12,8 @@ export const Navbar = () => {
     <AppBar position="sticky" sx={{ mb: 4, backgroundColor: '#e91e63' }}>
       <Container maxWidth="lg">
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, fontWeight: 'bold', letterSpacing: 1 }}
-          >
-            CAMPUS NOTIFICATIONS-SHRUTHIKA
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            CAMPUS NOTIFICATIONS
           </Typography>
           <Box sx={{ display: 'flex', gap: 2 }}>
             <Button
